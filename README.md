@@ -1,5 +1,4 @@
-In the main file encrypted_password.py, we use the generate_password function to create a random password with options to include uppercase letters, digits, and special characters. 
-We then use the generate_encrypted_password function to encrypt the generated password using the cryptography package and Fernet symmetric encryption. 
+In the main file encrypted_password.py, we use the generate_password function to create a random password with options to include uppercase letters, digits, and special characters. We then use the generate_encrypted_password function to encrypt the generated password using the cryptography package and Fernet symmetric encryption. 
 Finally, we can use the decrypt_password function to decrypt the encrypted password using the same encryption key.
 
 We use the cryptography encryption library with secure key management. 
