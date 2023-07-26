@@ -87,7 +87,3 @@ def generate_encrypted_password_api():
     password, encrypted_password, encryption_key = generate_encrypted_password(length, uppercase, digits, special_chars)
     return jsonify({"password": password, "encrypted_password": encrypted_password, "encryption_key": encryption_key.decode('utf-8')}), 200
 
-if __name__ == '__main__':
-    app.run()
-    print(encryption_key)
-
