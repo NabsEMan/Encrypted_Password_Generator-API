@@ -38,7 +38,6 @@ def decrypt_password(encrypted_password, encryption_key):
     return decrypted_password
 
 @app.route('/generate_password', methods=['GET'])
-#@swag_from('password_generator.yml')
 def generate_encrypted_password_api():
     """
     Generate an encrypted password
@@ -85,5 +84,14 @@ def generate_encrypted_password_api():
     special_chars = bool(request.args.get('special_chars', True))
 
     password, encrypted_password, encryption_key = generate_encrypted_password(length, uppercase, digits, special_chars)
-    return jsonify({"password": password, "encrypted_password": encrypted_password, "encryption_key": encryption_key.decode('utf-8')}), 200
+    return jsonify({"password": password, "encrypted_password": encrypted_password, "encryption_key": encryption_key.decode('utf-8')}), 200@app.route('/')
+
+@app.route('/')
+def index():
+    # A welcome message to test our server
+    return "<h1>Welcome to our medium-greeting-api!</h1>"
+
+if __name__ == '__main__':
+    # Threaded option to enable multiple instances for multiple user access support
+    app.run(threaded=True, port=5000)
 
