@@ -47,7 +47,7 @@ def generate_encrypted_password_api():
         in: query
         type: integer
         required: false
-        default: 8
+        default: 12
       - name: uppercase
         in: query
         type: boolean
