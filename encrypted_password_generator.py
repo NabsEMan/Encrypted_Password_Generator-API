@@ -78,14 +78,17 @@ def generate_encrypted_password_api():
       400:
         description: Invalid input. Check the request parameters.
     """
-    length = int(request.args.get('length', 12))
-    uppercase = bool(request.args.get('uppercase', True))
-    digits = bool(request.args.get('digits', True))
-    special_chars = bool(request.args.get('special_chars', True))
+    try:
+      length = int(request.args.get('length', 12))
+      uppercase = bool(request.args.get('uppercase', True))
+      digits = bool(request.args.get('digits', True))
+      special_chars = bool(request.args.get('special_chars', True))
 
-    password, encrypted_password, encryption_key = generate_encrypted_password(length, uppercase, digits, special_chars)
-    return jsonify({"password": password, "encrypted_password": encrypted_password, "encryption_key": encryption_key.decode('utf-8')}), 200@app.route('/')
-
+      password, encrypted_password, encryption_key = generate_encrypted_password(length, uppercase, digits, special_chars)
+      return jsonify({"password": password, "encrypted_password": encrypted_password.decode('utf-8'), "encryption_key": encryption_key.decode('utf-8')}), 200
+    except Exception as e:
+        return jsonify({"error": "Invalid input. Check the request parameters."}), 400
+        
 @app.route('/')
 def index():
     # A welcome message to test our server
